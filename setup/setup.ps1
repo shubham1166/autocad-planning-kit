@@ -59,8 +59,13 @@ if (-not (Test-Path $McpDir)) {
     git -C $McpDir pull --ff-only
 }
 Push-Location $McpDir
-uv sync
+# Pin Python 3.12: pywin32 (needed to talk to AutoCAD) has no wheels for the newest Python
+if (Test-Path ".venv") { Remove-Item -Recurse -Force ".venv" }
+uv python install 3.12
+uv sync --python 3.12
+$ok = $LASTEXITCODE -eq 0
 Pop-Location
+if (-not $ok) { throw "Installing the AutoCAD MCP server failed (uv sync). Send a screenshot of the error above." }
 
 # Folder the MCP server and the AutoCAD-side LISP use to talk to each other
 New-Item -ItemType Directory -Force -Path "C:\temp" | Out-Null
