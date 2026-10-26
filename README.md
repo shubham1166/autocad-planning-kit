@@ -24,7 +24,7 @@ Two pieces work together:
    ```
    Close and reopen PowerShell, then run:
    ```powershell
-   git clone <THIS-REPO-URL> C:\autocad-planning-kit
+   git clone https://github.com/shubham1166/autocad-planning-kit.git C:\autocad-planning-kit
    cd C:\autocad-planning-kit
    powershell -ExecutionPolicy Bypass -File setup\setup.ps1
    ```
