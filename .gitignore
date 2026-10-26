@@ -1,0 +1,6 @@
+*.bak
+*.dwl
+*.dwl2
+*.sv$
+plot.log
+.DS_Store

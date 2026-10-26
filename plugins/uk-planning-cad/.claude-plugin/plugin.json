@@ -1,0 +1,8 @@
+{
+  "name": "uk-planning-cad",
+  "version": "0.1.0",
+  "description": "Planning drawing standards, permitted-development checks, AutoLISP tools and drawing QA for AutoCAD",
+  "author": {
+    "name": "Shubham Sharma"
+  }
+}

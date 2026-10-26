@@ -1,0 +1,14 @@
+{
+  "name": "autocad-planning-kit",
+  "description": "Claude Code skills for UK planning-permission and permitted-development drawings in AutoCAD",
+  "owner": {
+    "name": "Shubham Sharma"
+  },
+  "plugins": [
+    {
+      "name": "uk-planning-cad",
+      "source": "./plugins/uk-planning-cad",
+      "description": "Planning drawing standards, permitted-development checks, AutoLISP tools and drawing QA for AutoCAD"
+    }
+  ]
+}

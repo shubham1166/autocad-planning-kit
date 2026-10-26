@@ -1,0 +1,34 @@
+{
+  "site": {
+    "house_type": "semi-detached",
+    "article_2_3_land": false,
+    "flat_or_maisonette": false,
+    "listed_building": false,
+    "pd_rights_removed": false,
+    "curtilage_area": 420.0,
+    "original_house_footprint": 68.0,
+    "other_buildings_footprint_total": 41.5,
+    "original_house_width": 7.2,
+    "existing_ridge_height": 8.4,
+    "existing_eaves_height": 5.3
+  },
+  "A": {
+    "storeys": 1,
+    "rear_depth": 3.0,
+    "height": 3.6,
+    "eaves_height": 2.9,
+    "distance_to_boundary": 0.5
+  },
+  "B": {
+    "volume_total_incl_previous": 38.2,
+    "eaves_setback": 0.25,
+    "higher_than_ridge": false
+  },
+  "E": {
+    "storeys": 1,
+    "height": 2.5,
+    "eaves_height": 2.3,
+    "distance_to_boundary": 1.0,
+    "dual_pitched_roof": false
+  }
+}
