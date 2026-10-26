@@ -31,7 +31,7 @@ If the AutoCAD MCP server is connected, measure from the drawing rather than ask
 5. Heights: from natural ground level adjacent to the building (on sloping ground, the highest ground level adjacent — tell the designer this is an interpretation point).
 6. Distance to boundary: shortest distance from the proposal to the boundary line.
 
-Then put the numbers into `scripts/pd_check.py` (`python pd_check.py measurements.json`) to get a deterministic pass/fail table. See `scripts/example.json` for the input format. Do the arithmetic with the script, not in your head.
+Then put the numbers into `scripts/pd_check.py` (`uv run scripts/pd_check.py measurements.json` — uv is installed by the setup script and supplies Python; plain `python` also works if installed) to get a deterministic pass/fail table. See `scripts/example.json` for the input format. Do the arithmetic with the script, not in your head.
 
 ## Output format
 
