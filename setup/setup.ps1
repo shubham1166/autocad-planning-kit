@@ -1,6 +1,6 @@
 # One-time setup for Windows 10 (1809+) / Windows 11.
-# Run from the repo folder in PowerShell:
-#   powershell -ExecutionPolicy Bypass -File setup\setup.ps1
+# Run from the repo folder in Command Prompt:
+#   setup\setup.cmd
 #
 # Installs: Windows Terminal, Git, uv (Python manager), Claude Code,
 # the AutoCAD MCP server, and this repo's skills as a Claude Code plugin.
@@ -41,6 +41,15 @@ if (-not (Have "claude")) {
     Invoke-RestMethod https://claude.ai/install.ps1 | Invoke-Expression
     Refresh-Path
 }
+
+# Make sure %USERPROFILE%\.local\bin (where claude.exe lives) is on the user PATH permanently
+$bin = "$env:USERPROFILE\.local\bin"
+$userPath = [Environment]::GetEnvironmentVariable("Path", "User")
+if (-not $userPath) { $userPath = "" }
+if (($userPath -split ";") -notcontains $bin) {
+    [Environment]::SetEnvironmentVariable("Path", ($userPath.TrimEnd(";") + ";" + $bin).TrimStart(";"), "User")
+    Write-Host "Added $bin to your PATH"
+}
 claude --version
 
 Step "Installing the AutoCAD MCP server into $McpDir"
@@ -73,4 +82,4 @@ Write-Host "  2. Load  $McpDir\lisp-code\mcp_dispatch.lsp"
 Write-Host "  3. Load  $RepoRoot\plugins\uk-planning-cad\skills\autolisp-tools\lisp\planning-tools.lsp"
 Write-Host "  4. Click 'Contents...' under Startup Suite and add both files so they load every time"
 Write-Host ""
-Write-Host "Then open Windows Terminal, type:  claude"
+Write-Host "Then CLOSE this window, open a new Command Prompt tab in Windows Terminal, and type:  claude"

@@ -17,31 +17,35 @@ Two pieces work together:
 
 ## Setup (about 10 minutes, once)
 
-1. Open **PowerShell** from the Start menu. Don't run it as admin.
-2. Install Git if you don't have it, then clone this repo:
-   ```powershell
+Everything is typed in **Command Prompt** (cmd).
+
+1. Press Start, type `cmd`, press Enter, then install Windows Terminal and Git:
+   ```
+   winget install --id Microsoft.WindowsTerminal -e
    winget install --id Git.Git -e
    ```
-   Close and reopen PowerShell, then run:
-   ```powershell
-   git clone https://github.com/shubham1166/autocad-planning-kit.git C:\autocad-planning-kit
-   cd C:\autocad-planning-kit
-   powershell -ExecutionPolicy Bypass -File setup\setup.ps1
+2. Open **Terminal** from the Start menu. Click the **⌄** arrow next to the tab and choose **Command Prompt**. To make that the default, go to Settings → Startup → Default profile → **Command Prompt** → Save.
+3. In that Command Prompt tab, run:
    ```
-3. Inside **AutoCAD**, type `APPLOAD` and load both of these files. Add both to the **Startup Suite** in the same dialog so they load every time.
+   git clone https://github.com/shubham1166/autocad-planning-kit.git C:\autocad-planning-kit
+   cd /d C:\autocad-planning-kit
+   setup\setup.cmd
+   ```
+   This installs Claude Code (adding it to your PATH), the AutoCAD connector and the planning skills.
+4. Inside **AutoCAD**, type `APPLOAD` and load both of these files. Add both to the **Startup Suite** in the same dialog so they load every time.
    - `C:\autocad-mcp\lisp-code\mcp_dispatch.lsp`
    - `C:\autocad-planning-kit\plugins\uk-planning-cad\skills\autolisp-tools\lisp\planning-tools.lsp`
-4. Open **Windows Terminal** from the Start menu, type `claude`, and log in when it asks.
+5. **Close Terminal completely**, open it again (Command Prompt tab), type `claude`, and log in when it asks.
 
 To check it works, open a drawing in AutoCAD, then in Claude type:
 > Check the AutoCAD connection and list the layouts and title block fields in the open drawing.
 
 ## The terminal: Windows Terminal
 
-The setup installs **Windows Terminal**, Microsoft's free terminal. It comes with Windows 11 and is on the Microsoft Store for Windows 10. It supports copy and paste with Ctrl+C / Ctrl+V and tabs, and Claude Code displays properly in it, which the old blue PowerShell window and `cmd.exe` don't manage well.
+Use **Windows Terminal** with a **Command Prompt** tab. Windows Terminal is Microsoft's free terminal. It comes with Windows 11 and is on the Microsoft Store for Windows 10. It supports copy and paste with Ctrl+C / Ctrl+V and tabs, and Claude Code displays properly in it, which the old standalone cmd window doesn't manage well.
 
 Tips for someone new to terminals:
-- **Start Claude:** open Windows Terminal, type `cd C:\Jobs\2417` (your job folder), then `claude`.
+- **Start Claude:** open Windows Terminal, type `cd /d C:\Jobs\2417` (your job folder), then `claude`.
 - **Paste a screenshot:** Win+Shift+S to snip, then Alt+V in Claude.
 - **Stop Claude mid-task:** press Esc.
 - **Exit:** type `/exit`, or close the tab.
@@ -77,9 +81,9 @@ The skills are plain text files you can edit:
 
 ## Updating
 
-```powershell
-cd C:\autocad-planning-kit
-powershell -ExecutionPolicy Bypass -File setup\update.ps1
+```
+cd /d C:\autocad-planning-kit
+setup\update.cmd
 ```
 
 Skill changes take effect the next time Claude starts. If you edit the skills on your own, bump `version` in `plugins/uk-planning-cad/.claude-plugin/plugin.json`.
